@@ -38,8 +38,10 @@ service.interceptors.response.use(
           message: '登录异常,请重新登录',
           confirmButtonText: '重新登录'
         }).then(() => {
+          console.log(response.config)
           resetRouter()
         })
+        return Promise.reject(response.data.msg)
       } else {
         !response.config.hideFail && Toast.fail({icon: 'cross', message: response.data.msg, duration: 1.25 * 1000})
         return Promise.reject(response.data.msg)

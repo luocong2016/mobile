@@ -89,4 +89,17 @@ export function resetRouter() {
   myRouter.replace('/login')
 }
 
+/* Tip: 提示类报错处理 */
+// 添加当前页面路由到当前页面报错
+// const originalPush = VueRouter.prototype.push
+// VueRouter.prototype.push = function push(location) {
+//   return originalPush.call(this, location).catch(err => err)
+// }
+
+// 重定向到当前页面报错
+const originalReplace = VueRouter.prototype.replace
+VueRouter.prototype.replace = function replace(location) {
+  return originalReplace.call(this, location).catch(err => err)
+}
+
 export default myRouter

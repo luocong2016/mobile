@@ -6,8 +6,12 @@ import router from './router'
 import store from './store'
 import settings from './settings'
 
+import './styles'
 import './filters'
+import './directives'
 import './plugins'
+import './components'
+// import './utils/permission'
 
 Vue.config.productionTip = false
 

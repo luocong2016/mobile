@@ -23,8 +23,9 @@ module.exports = [
     url: '/user/login',
     type: 'post',
     response: config => {
-      const {phoneNumber} = config.body
-      const token = tokens[phoneNumber]
+      console.log(config)
+      const {username} = config.body
+      const token = tokens[username]
       // mock error
       if (!token) {
         return {
