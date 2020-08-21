@@ -16,6 +16,14 @@
 git clone https://github.com/luocong2016/mobile.git
 
 # 安装依赖
+npm i
+npm run cordova-prepare
+
+## 如果 cordova 安装不成功
+cd src-cordova
+cordova prepare
+cd ..
+npm run cordova-prepare
 
 # 启动服务
 npm run serve
