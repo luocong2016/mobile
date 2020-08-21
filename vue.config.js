@@ -25,6 +25,7 @@ module.exports = {
     },
     before: settings.mock ? require('./mock/mock-server') : null
   },
+
   chainWebpack(config) {
     // set svg-sprite-loader
     // config.module
@@ -69,6 +70,7 @@ module.exports = {
     })
     config.optimization.runtimeChunk('single')
   },
+
   css: {
     extract: isPro,
     sourceMap: false,
@@ -90,5 +92,11 @@ module.exports = {
         ]
       }
     }
+  },
+
+  publicPath: '',
+
+  pluginOptions: {
+    cordovaPath: 'src-cordova'
   }
 }
