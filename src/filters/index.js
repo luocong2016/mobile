@@ -7,7 +7,6 @@ filters.keys().forEach(file => {
     return
   }
   let filter = filters(file)
-  /* 兼容 import export 和 require module.export */
   filter = filter.default || filter
   if (filter.install) {
     Vue.use(filter)

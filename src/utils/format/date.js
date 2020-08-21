@@ -37,7 +37,8 @@ export function formatDate(date, options = {}) {
     date = opt.transform(date)
   }
   const moment = dayjs(date)
-  if (moment.toString() === 'Invalid date') {
+
+  if (moment.toString() === 'Invalid Date') {
     return opt.failPlaceHolder
   }
   return moment.format(opt.format)
