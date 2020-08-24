@@ -40,8 +40,6 @@ routes = routes.concat({
   redirect: '/404'
 })
 
-console.log(routes)
-
 const createRouter = () =>
   new VueRouter({
     // 第三个参数 savedPosition 当且仅当 popstate 导航 (通过浏览器的 前进/后退 按钮触发) 时才可用

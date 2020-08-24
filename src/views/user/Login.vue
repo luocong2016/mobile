@@ -7,7 +7,7 @@
     </div>
 
     <div class="login__content">
-      <van-field placeholder="手机号码" v-model="username" left-icon="phone-o" :error-message="usernameError" />
+      <van-field placeholder="手机号码/帐号" v-model="username" left-icon="user-o" :error-message="usernameError" />
       <van-field
         v-if="loginWay === 'password'"
         placeholder="登录密码"

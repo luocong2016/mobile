@@ -5,13 +5,13 @@
 {
   // ...
   methods: {
-      // ...
-      pattern(type) {
-          return validate[type]
-      },
-      validator(type) {
-          return val => validate[type].test(val)
-      }
+    // ...
+    pattern(type) {
+      return validate[type]
+    },
+    validator(type) {
+      return val => validate[type].test(val)
+    }
   }
 }
 ```
