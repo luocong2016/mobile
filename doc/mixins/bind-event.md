@@ -1,6 +1,6 @@
 ## 事件绑定
 ### 语法
-> 提供了 `mounted`、`activated`、`deactivated`、`beforeDestroy` 方法
+> 提供了 `mounted`、`activated`、`deactivated`、`beforeDestroy` 生命周期函数
 ```
 {
   // ...
