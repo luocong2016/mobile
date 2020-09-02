@@ -7,6 +7,7 @@ const isPro = process.env.NODE_ENV === 'production'
 const port = process.env.port || process.env.npm_config_port || 8888
 
 module.exports = {
+  runtimeCompiler: true, // 支持 template 编译
   devServer: {
     port,
     open: false,

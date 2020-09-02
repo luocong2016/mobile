@@ -1,5 +1,5 @@
 import Vue from 'vue'
-
+// import 'vant/lib/index.css'
 import {
   /* 基础组件 */
   Button,

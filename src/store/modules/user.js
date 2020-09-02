@@ -1,12 +1,12 @@
 import {Toast} from 'vant'
 import {resetRouter} from '@/router'
 import {storage} from '@/settings'
-import {login, getInfo} from '@/api/user'
+import {login, logout, getInfo} from '@/api/user'
 import {getToken, setToken, removeToken} from '@/utils/auth'
 
 const AWAIT = 1250
 const USER_DATA = 'USER_DATA'
-const storages = window[storage]
+const storages = window[storage] // if 浏览器禁用缓存，会报错
 
 export default {
   namespaced: true,
@@ -34,10 +34,9 @@ export default {
   },
   actions: {
     login(state, data = {}) {
-      debugger
       const {username, password, $route, $router} = data
       login({username, password}).then(response => {
-        state.commit('LOGIN', response.data)
+        state.commit('LOGIN', response)
         Toast({
           message: '登录成功',
           position: 'middle',
@@ -49,11 +48,15 @@ export default {
         }, AWAIT)
       })
     },
+    logout({commit}) {
+      logout().then(() => {
+        commit('LOGOUT')
+      })
+    },
     getInfo({commit, state}) {
       return new Promise((resolve, reject) => {
-        getInfo(state.token)
-          .then(response => {
-            const {data} = response
+        getInfo({token: state.token})
+          .then(data => {
             if (!data) {
               reject('获取用户信息错误！')
             }

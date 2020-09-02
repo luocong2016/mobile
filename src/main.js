@@ -11,7 +11,7 @@ import './filters'
 import './directives'
 import './plugins'
 import './components'
-// import './utils/permission'
+import './utils/permission'
 
 Vue.config.productionTip = false
 

@@ -1,22 +1,21 @@
+## provide / inject
+
+### demo
+```
 <template>
   <div class="home page">
-    <van-button type="primary" @click="onClick">主要按钮1</van-button>
     <t-row>
       <t-col>1</t-col>
       <t-col>2</t-col>
     </t-row>
   </div>
 </template>
-
 <script>
 import {ChildrenMixin, ParentMixin} from '@/mixins/relation'
 const tRow = {
   name: 'tRow',
   mixins: [ParentMixin('row')],
-  template: `<div>
-    row
-    <slot />
-  </div>`,
+  template: `<div> row <slot /></div>`,
   created() {
     console.log(this)
   }
@@ -24,28 +23,15 @@ const tRow = {
 const tCol = {
   name: 'tCol',
   mixins: [ChildrenMixin('row')],
-  template: `<div>
-    <slot />
-  </div>
-  `,
+  template: `<div><slot /></div>`,
   mounted() {
     console.log('child:', this)
   }
 }
-
-import {mapActions} from 'vuex'
 export default {
   name: 'PortalMixinDemo',
-  components: {tRow, tCol},
-  methods: {
-    ...mapActions({
-      logout: 'user/logout'
-    }),
-    onClick() {
-      this.logout()
-    }
-  }
+  components: {tRow, tCol}
 }
 </script>
-
 <style lang="less" scope></style>
+```
