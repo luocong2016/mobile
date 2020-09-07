@@ -22,6 +22,9 @@ pnpm-debug.log*
 *.sln
 *.sw?
 
+yarn.lock
+package-lock.json
+
 # Cordova
 /src-cordova/platforms
 /src-cordova/plugins

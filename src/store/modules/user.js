@@ -26,6 +26,11 @@ export default {
       removeToken()
       storages.removeItem(USER_DATA)
       resetRouter()
+      Toast({
+        message: '退出成功',
+        position: 'middle',
+        duration: AWAIT
+      })
     },
     SET_USER_DATA(state, data) {
       state.user = data

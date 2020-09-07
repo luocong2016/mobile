@@ -6,8 +6,8 @@ NProgress.configure({showSpinner: false})
 import store from '@/store'
 import router from '@/router'
 import {getToken} from '@/utils/auth'
+import {whiteList} from '@/settings'
 
-const whiteList = ['/login', '/register', '/404']
 const isWhiteList = path => whiteList.some(item => (_.isRegExp(item) ? item.test(path) : item === path))
 
 router.beforeEach(async (to, from, next) => {

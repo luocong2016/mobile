@@ -1,51 +1,42 @@
 <template>
   <div class="home page">
+    <navSwipe />
+    <van-row>
+      <van-col span="4">span: 4</van-col>
+      <van-col>offset: 4, span: 10</van-col>
+    </van-row>
+
     <van-button type="primary" @click="onClick">主要按钮1</van-button>
-    <t-row>
-      <t-col>1</t-col>
-      <t-col>2</t-col>
-    </t-row>
   </div>
 </template>
 
 <script>
-import {ChildrenMixin, ParentMixin} from '@/mixins/relation'
-const tRow = {
-  name: 'tRow',
-  mixins: [ParentMixin('row')],
-  template: `<div>
-    row
-    <slot />
-  </div>`,
-  created() {
-    console.log(this)
-  }
-}
-const tCol = {
-  name: 'tCol',
-  mixins: [ChildrenMixin('row')],
-  template: `<div>
-    <slot />
-  </div>
-  `,
-  mounted() {
-    console.log('child:', this)
-  }
-}
-
+import NavSwipe from '@/components/NavSwipe/index'
 import {mapActions} from 'vuex'
 export default {
-  name: 'PortalMixinDemo',
-  components: {tRow, tCol},
+  name: 'Home',
+  components: {NavSwipe},
   methods: {
     ...mapActions({
       logout: 'user/logout'
     }),
     onClick() {
       this.logout()
+    },
+    onSpeak() {
+      console.log(1)
     }
   }
 }
 </script>
 
-<style lang="less" scope></style>
+<style lang="less" scope>
+.info-demo {
+  span {
+    position: relative;
+  }
+  span + span {
+    margin-left: 20px;
+  }
+}
+</style>

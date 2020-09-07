@@ -4,26 +4,17 @@ const pxtorem = require('postcss-pxtorem')
 const settings = require('./src/settings')
 const resolve = dir => path.join(__dirname, dir)
 const isPro = process.env.NODE_ENV === 'production'
-const port = process.env.port || process.env.npm_config_port || 8888
 
 module.exports = {
   runtimeCompiler: true, // 支持 template 编译
   devServer: {
-    port,
+    port: settings.port,
     open: false,
     overlay: {
       warnings: false,
       errors: true
     },
-    proxy: {
-      [settings.baseURL]: {
-        target: `http://localhost:${port}`, // target host
-        ws: false, // proxy websockets
-        secure: false, // if you want to verify the SSL Certs
-        changeOrigin: true // changes the origin of the host header to the target URL
-        // pathRewrite: {'^/api': ''}
-      }
-    },
+    proxy: settings.proxy,
     before: settings.mock ? require('./mock/mock-server') : null
   },
 
