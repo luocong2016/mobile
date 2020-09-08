@@ -1,64 +1,58 @@
-<template>
-  <div class="nav-swipe">
-    <div class="nav-swipe__nav">
-      <div class="nav-swipe__wrap">
-        <s-title title="测试" />
-        <s-title title="测试" dot />
-        <s-title title="测试" :info="2" />
-        <s-title title="测试" disabled />
-        <s-title title="测试" />
-        <s-title title="测试" />
-        <s-title title="测试" />
-        <s-title title="测试" />
-        <s-title title="测试" />
-        <s-title title="测试" />
-        <s-title title="测试" />
-        <s-title title="测试" />
-        <s-title title="测试" />
-        <s-title title="测试" />
-        <s-title title="测试" />
-        <s-title title="测试" />
-        <s-title title="测试" />
-        <s-title title="测试" />
-        <s-title title="测试" />
-        <s-title title="测试" />
-        <s-title title="测试" />
-        <s-title title="测试" />
-        <s-title title="测试" />
-        <s-title title="测试" />
-        <s-title title="测试" />
-        <s-title title="测试" />
-        <s-title title="测试" />
-        <s-title title="测试" />
-        <s-title title="测试" />
-        <s-title title="测试" />
-      </div>
-    </div>
-    <van-icon name="newspaper-o" />
-  </div>
-</template>
-
 <script>
-import STitle from './Title'
+import Title from './Title'
 export default {
   name: 'NavSwipe',
-  components: {STitle},
   props: {
-    data: Array,
-    diasbled: Boolean,
+    data: {
+      type: Array,
+      default: () => []
+    },
+    disabled: Boolean,
     sticky: Boolean,
-    titleClass: String,
-    titleStyle: Object,
+    titleClass: {
+      type: String,
+      default: ''
+    },
+    titleStyle: {
+      type: Object,
+      default: () => ({})
+    },
+    icon: {
+      type: String,
+      default: 'newspaper-o'
+    },
     type: {
       type: String,
       validator: value => ['line', 'card'].indexOf(value) !== -1,
       default: 'line'
     }
   },
-  data() {
-    return {
-      active: ''
+  methods: {
+    handleClick() {
+      console.log(1)
     }
+  },
+  render() {
+    const {type, icon, disabled, titleClass, titleStyle, handleClick} = this
+    const Content = (
+      <div class={['nav-swipe', `nav-swipe--${type}`]}>
+        <div class="nav-swipe__nav">
+          <div class="nav-swipe__wrap">
+            {this.data.map(item => (
+              <Title
+                disabled={disabled}
+                class={titleClass}
+                style={titleStyle}
+                onClick={handleClick}
+                {...{attrs: item}}
+              />
+            ))}
+          </div>
+        </div>
+        <van-icon name={icon} size="20" />
+      </div>
+    )
+    return this.sticky ? <van-sticky container={this.$el}> {Content} </van-sticky> : Content
   }
 }
 </script>
@@ -74,18 +68,23 @@ export default {
   box-sizing: content-box;
   cursor: pointer;
   font-size: 16px;
+  background-color: #fff;
   &__tab {
     & + & {
-      padding: 12px 0;
-      margin: 0 0 0 16px;
+      padding: 14px 0 5px;
+      margin: 0 0 0 14px;
+    }
+    &:last-child {
+      margin-right: 10px;
     }
     display: inline-block;
     cursor: pointer;
   }
   &__nav {
     flex: 1;
-    padding-right: 3px;
+    margin-right: 3px;
     overflow: hidden;
+    box-shadow: -5px 0 3px -5px rgb(116, 116, 116) inset;
   }
   &__wrap {
     white-space: nowrap;
@@ -100,6 +99,9 @@ export default {
   }
   &__text-wrapper {
     position: relative;
+  }
+  &--disabled {
+    color: #c8c9cc;
   }
 }
 .nav-swipe__wrap::-webkit-scrollbar {

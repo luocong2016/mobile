@@ -8,7 +8,8 @@ Vue 2.6+ 解决移动端(h5、Hybrid App)解决方案。Hybrid App 方案使用�
 ## 功能模块
 
 > 正在开发中...
-
+- [x] mock
+- [x] login
 
 ## 开发
 ```

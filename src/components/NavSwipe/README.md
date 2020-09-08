@@ -69,9 +69,9 @@ export default {
           dot: true
         },
         {
-          name: 'badge',
-          title: 'badge',
-          badge: '1'
+          name: 'info',
+          title: 'info',
+          info: '1'
         },
         {
           name: 'url',

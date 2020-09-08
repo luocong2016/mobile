@@ -56,6 +56,7 @@ import {
   List,
   NoticeBar,
   Skeleton,
+  Sticky,
   Swipe,
   SwipeItem,
   Tag,
@@ -111,6 +112,7 @@ Vue.use(Empty)
 Vue.use(ImagePreview)
 Vue.use(Lazyload)
 Vue.use(List)
+Vue.use(Sticky)
 Vue.use(NoticeBar)
 Vue.use(Skeleton)
 Vue.use(Swipe).use(SwipeItem)

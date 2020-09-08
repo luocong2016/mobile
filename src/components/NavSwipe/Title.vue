@@ -41,7 +41,13 @@ export default {
     },
     genText() {
       const Text = (
-        <span class={{'nav-swipe__text': true, 'nav-swipe__text--ellipsis': this.scrollable}}>{this.title}</span>
+        <span
+          class={{
+            'nav-swipe__text': true,
+            'nav-swipe__text--ellipsis': this.scrollable
+          }}>
+          {this.title}
+        </span>
       )
       if (this.dot || (!_.isNil(this.info) && this.info !== '')) {
         return (
